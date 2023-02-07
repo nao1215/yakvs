@@ -1,2 +1,2 @@
-# yakvs
-yakvs - Yet Another Key Value Store
+# yakvs - Yet Another Key Value Store
+
