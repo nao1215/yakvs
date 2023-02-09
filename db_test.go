@@ -1,16 +1,20 @@
 // Package yakvs is Yet Another Key Value Store in golang.
 package yakvs
 
-import "testing"
+import (
+	"path/filepath"
+	"testing"
+)
 
-func Test_dummy(t *testing.T) {
-	t.Parallel()
+func TestOpen(t *testing.T) {
+	t.Run("Success to open yakvs", func(t *testing.T) {
+		t.Parallel()
 
-	t.Run("dummy_test", func(t *testing.T) {
-		want := "dummy"
-		got := dummy()
-		if want != got {
-			t.Errorf("mismatch want=%s, got=%s", want, got)
+		path := filepath.Join("testdata", "testdata.yakvs")
+		yakvs, err := Open(path)
+		if err != nil {
+			t.Errorf("expect=nil, got=error:%v", err)
 		}
+		yakvs.Close()
 	})
 }
